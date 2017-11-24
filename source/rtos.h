@@ -22,11 +22,11 @@ typedef enum {kAutoStart, kStartSuspended} rtos_autostart_e;
 typedef enum {aActivateTask, aSuspended, aCallback} alarm_action_e;
 typedef enum {rContinuous, rOnetime} alarm_recurrency_e;
 
-
 typedef int8_t rtos_task_handle_t;
 typedef int8_t rtos_alarm_handle_t;
 typedef uint64_t rtos_tick_t;
 
+uint64_t RTOS_TIC_PERIOD_IN_US = 1000;
 /**********************************************************************************/
 // RTOS API
 /**********************************************************************************/
@@ -101,4 +101,8 @@ void enable_button_interrupt(void);
  */
 void rtos_button_interrupt(rtos_task_handle_t task);
 
+/**
+ * _rtos function to change clk frequency
+ */
+void _change_clk_freq(void);
 #endif /* SOURCE_RTOS_H_ */

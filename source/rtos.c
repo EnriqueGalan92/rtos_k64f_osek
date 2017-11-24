@@ -424,4 +424,32 @@ static void _refresh_is_alive(void)
 		count++;
 	}
 }
+
+/**********************************************************************************/
+// CLOCK FREQUENCY CHANGE IMPLEMENTATION
+/**********************************************************************************/
+void _change_clk_freq(void)
+{
+    static uint8_t clock_switch = 0;
+    clock_switch ++;
+    if (3 == clock_switch)
+    {
+        clock_switch = 0;
+    }
+    switch (clock_switch)
+    {
+        case 0:
+            RTOS_TIC_PERIOD_IN_US = 1000;
+            break;
+        case 1:
+            RTOS_TIC_PERIOD_IN_US = 2000;
+            break;
+        case 2:
+            RTOS_TIC_PERIOD_IN_US = 4000;
+            break;
+        default:
+            RTOS_TIC_PERIOD_IN_US = 10000;
+            break;
+    }
+}
 #endif

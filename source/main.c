@@ -96,6 +96,7 @@ void PORTC_IRQHandler()
     PORT_ClearPinsInterruptFlags( PORTC, 1<<6 );
     PRINTF("Button pressed!!!!!\r\n");
     rtos_activate_alarm(alarm_2);
+    _change_clk_freq();
 }
 
 int main(void)
